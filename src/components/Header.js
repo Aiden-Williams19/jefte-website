@@ -23,7 +23,7 @@ const Header = ({ scrollToSection, activeSection }) => {
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
         <div className="logo" onClick={() => handleNavClick('home')}>
-          <h2>Photo Studio</h2>
+          <h2>JM Studios</h2>
         </div>
         
         <nav className={`nav ${isMobileMenuOpen ? 'mobile-open' : ''}`}>

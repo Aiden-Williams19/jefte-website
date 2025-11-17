@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>Photo Studio</h3>
+            <h3>JM Studios</h3>
             <p>Capturing life's beautiful moments through professional photography and video editing.</p>
           </div>
 
