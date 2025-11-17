@@ -1,15 +1,31 @@
 .booking-section {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-blue) 50%, var(--color-dark) 100%);
   padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
 }
 
 .booking-form-container {
   max-width: 900px;
   margin: 0 auto;
-  background: white;
+  background: var(--color-cream-light);
   padding: 3rem;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .booking-form {
@@ -37,7 +53,7 @@
 }
 
 .required {
-  color: #e74c3c;
+  color: var(--color-error);
 }
 
 .form-group input,
@@ -56,18 +72,18 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
 .form-group input.error,
 .form-group select.error,
 .form-group textarea.error {
-  border-color: #e74c3c;
+  border-color: var(--color-error);
 }
 
 .error-message {
-  color: #e74c3c;
+  color: var(--color-error);
   font-size: 0.85rem;
   margin-top: -0.25rem;
 }
@@ -79,22 +95,24 @@
 
 .submit-btn {
   padding: 1.125rem 2.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #d4af37 0%, #f4a460 100%);
+  color: var(--color-dark);
   border: none;
   border-radius: 50px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
 }
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+  background: linear-gradient(135deg, #f4a460 0%, #d4af37 100%);
 }
 
 .submit-btn:active:not(:disabled) {
@@ -107,15 +125,16 @@
 }
 
 .success-message {
-  background: #d4edda;
-  color: #155724;
+  background: rgba(39, 174, 96, 0.15);
+  color: var(--color-success);
   padding: 1rem 1.5rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border: 1px solid #c3e6cb;
+  border: 1px solid rgba(39, 174, 96, 0.3);
   animation: slideIn 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 @keyframes slideIn {
