@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './BookingForm.css';
+import Calendar from './Calendar';
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -263,42 +264,54 @@ const BookingForm = () => {
               </div>
             </div>
 
-            <div className="form-row">
-              <div className="form-group">
+            <div className="form-row form-row-calendar">
+              <div className="form-group form-group-calendar">
                 <label htmlFor="eventDate">
                   Event Date <span className="required">*</span>
                 </label>
-                <input
-                  type="date"
-                  id="eventDate"
-                  name="eventDate"
-                  value={formData.eventDate}
-                  onChange={handleChange}
-                  className={errors.eventDate ? 'error' : ''}
-                  min={new Date().toISOString().split('T')[0]}
-                  onFocus={(e) => {
-                    // Disable booked dates
-                    const input = e.target;
-                    input.addEventListener('input', function() {
-                      if (bookedDates.includes(this.value)) {
-                        setErrors(prev => ({
+                {isLoadingAvailability ? (
+                  <div className="calendar-loading">
+                    <span style={{ fontSize: '14px', color: '#666', fontStyle: 'italic' }}>
+                      Loading calendar availability...
+                    </span>
+                  </div>
+                ) : (
+                  <>
+                    {/* Hidden input for form submission */}
+                    <input
+                      type="hidden"
+                      id="eventDate"
+                      name="eventDate"
+                      value={formData.eventDate}
+                      onChange={handleChange}
+                    />
+                    <Calendar
+                      selectedDate={formData.eventDate}
+                      onDateSelect={(date) => {
+                        setFormData(prev => ({
                           ...prev,
-                          eventDate: 'This date is already booked. Please select another date.'
+                          eventDate: date
                         }));
-                      }
-                    });
-                  }}
-                />
-                {errors.eventDate && <span className="error-message">{errors.eventDate}</span>}
-                {isLoadingAvailability && (
-                  <span style={{ fontSize: '12px', color: '#666', fontStyle: 'italic' }}>
-                    Loading availability...
-                  </span>
-                )}
-                {!isLoadingAvailability && bookedDates.length > 0 && (
-                  <span style={{ fontSize: '12px', color: '#666', display: 'block', marginTop: '5px' }}>
-                    {bookedDates.length} date{bookedDates.length !== 1 ? 's' : ''} already booked
-                  </span>
+                        // Clear error when date is selected
+                        if (errors.eventDate) {
+                          setErrors(prev => ({
+                            ...prev,
+                            eventDate: ''
+                          }));
+                        }
+                      }}
+                      bookedDates={bookedDates}
+                      disabled={isSubmitting}
+                    />
+                    {errors.eventDate && <span className="error-message calendar-error">{errors.eventDate}</span>}
+                    {!isLoadingAvailability && bookedDates.length > 0 && (
+                      <div className="calendar-summary">
+                        <span className="summary-text">
+                          📋 <strong>{bookedDates.length}</strong> date{bookedDates.length !== 1 ? 's' : ''} already booked. Select an available date above.
+                        </span>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 

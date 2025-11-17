@@ -119,10 +119,11 @@
   border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.hero-placeholder svg {
+.hero-img {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
 }
 
 @media (max-width: 968px) {

@@ -32,11 +32,11 @@ const Hero = ({ scrollToSection }) => {
         </div>
         <div className="hero-image">
           <div className="hero-placeholder">
-            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="400" height="400" fill="#f0f0f0"/>
-              <circle cx="200" cy="180" r="60" fill="#ddd"/>
-              <rect x="160" y="250" width="80" height="100" rx="10" fill="#ddd"/>
-            </svg>
+            <img 
+              src="/images/Jefte.jpeg" 
+              alt="Jefte - Professional Photographer" 
+              className="hero-img"
+            />
           </div>
         </div>
       </div>

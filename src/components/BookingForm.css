@@ -153,6 +153,47 @@
   font-weight: bold;
 }
 
+.form-row-calendar {
+  grid-template-columns: 1fr;
+}
+
+.form-group-calendar {
+  grid-column: 1 / -1;
+}
+
+.calendar-loading {
+  padding: 2rem;
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+}
+
+.calendar-error {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.calendar-summary {
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(244, 164, 96, 0.08) 100%);
+  border-left: 4px solid #d4af37;
+  border-radius: 8px;
+}
+
+.summary-text {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.summary-text strong {
+  color: #333;
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .booking-form-container {
     padding: 2rem 1.5rem;
@@ -163,8 +204,20 @@
     gap: 1.5rem;
   }
 
+  .form-row-calendar {
+    grid-template-columns: 1fr;
+  }
+
   .submit-btn {
     padding: 1rem 2rem;
     font-size: 1rem;
+  }
+
+  .calendar-summary {
+    padding: 0.75rem;
+  }
+
+  .summary-text {
+    font-size: 0.85rem;
   }
 }
