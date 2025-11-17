@@ -1,0 +1,17 @@
+.App {
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+/* Smooth scrolling sections */
+section {
+  padding: 80px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 15px;
+  }
+}
